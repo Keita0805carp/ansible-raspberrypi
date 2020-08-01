@@ -1,0 +1,7 @@
+all:
+  hosts:
+   RaspberryPi-Zero:
+      ansible_host: [IP_ADDRESS]
+      ansible_ssh_port: [SSH_PORT]
+      ansible_user: [USER_NAME]
+      ansible_ssh_private_key_file: ~/.ssh/id_rsa

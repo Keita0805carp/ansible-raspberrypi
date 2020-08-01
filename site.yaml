@@ -1,0 +1,4 @@
+- hosts: RaspberryPi-Zero
+  become: yes
+  roles:
+    - apt
