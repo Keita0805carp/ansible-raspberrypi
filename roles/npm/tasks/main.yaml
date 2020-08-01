@@ -1,0 +1,24 @@
+---
+  - name: Install "homebridge" node.js package globally.
+    npm:
+      name: homebridge
+      executable: /home/zero/.config/nvm/8.17.0/bin/npm
+      global: yes
+  
+  - name: Install "homebrdige-irkit" node.js package globally.
+    npm:
+      name: homebridge-irkit
+      executable: /home/zero/.config/nvm/8.17.0/bin/npm
+      global: yes
+
+  - name: Install "homebrdge-cmd" node.js package globally.
+    npm:
+      name: homebridge-cmd
+      executable: /home/zero/.config/nvm/8.17.0/bin/npm
+      global: yes
+      
+  - name: Install "homebridge-dht" node.js package globally.
+    npm:
+      name: homebridge-dht
+      executable: /home/zero/.config/nvm/8.17.0/bin/npm
+      global: yes

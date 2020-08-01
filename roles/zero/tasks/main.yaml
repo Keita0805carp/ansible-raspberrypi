@@ -5,26 +5,19 @@
     state: absent
     remove: yes
 
-- name: reboot
-  shell: /sbin/reboot
-  async: 1
-  poll: 0
-  ignore_errors: true
-
-- name: wait ssh down
-  local_action: wait_for host=RaspberryPi-zero port=22 state=stopped
-
-- name: wait ssh up
-  wait_for: host=RaspberryPi-zero port=22 delay=30
-  delegate_to: 127.0.0.1
-
+    
 - name: Set authorized keys taken from url
   authorized_key:
     user: zero
     state: present
     key: https://github.com/Keita0805carp.keys
-
-
+      
+      
 - name: set timezone to tokyo
   timezone:
     name: Asia/Tokyo
+        
+- name: Unconditionally reboot the machine with all defaults
+  reboot:
+    reboot_timeout: 100
+    test_command: 'whoami'

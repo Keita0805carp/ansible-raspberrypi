@@ -1,0 +1,41 @@
+---
+- name: config SSH port
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "#Port 22"
+    line: Port 2222
+
+- name: config SSH password authentication
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "#PasswordAuthentication yes"
+    line: PasswordAuthentication no
+
+
+
+- name: configure2 watchdog
+  lineinfile:
+    dest: "/boot/config.txt"
+    regexp: "dtparam=watchdog=on"
+    line: dtparam=watchdog=on
+
+- name: configure2 watchdog
+  lineinfile:
+    dest: "/etc/modprobe.d/bcm2835-wdt.conf"
+    regexp: "options bcm2835_wdt heartbeat=14 nowayout=0"
+    line: options bcm2835_wdt heartbeat=14 nowayout=0
+    create: yes
+
+- name: configure3 watchdog
+  lineinfile:
+    dest: "/etc/systemd/system.conf"
+    regexp: "RuntimeWatchdogSec=0"
+    line: RuntimeWatchdogSec=14
+
+    
+#- name: Add samba user  
+#  shell: echo -e "passwd\npasswd\n" | sudo smbpasswd -a zero
+
+- name: Unconditionally reboot the machine with all defaults
+  reboot:
+    reboot_timeout: 100

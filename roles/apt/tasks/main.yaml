@@ -4,24 +4,28 @@
 ##    become: yes
 ##tasks:
 
-- name: Upgrade all packages to the latest version
-  apt:
-    name: "*"
-    state: latest
-
-- name: Update all packages to the latest version
-  apt:
-    upgrade: dist
+#- name: Upgrade all packages to the latest version
+#  apt:
+#    name: "*"
+#    state: latest
+#
+#- name: Update all packages to the latest version
+#  apt:
+#    upgrade: dist
 
 - name: Install a list of packages
   apt:
     pkg:
+    - python3
+    - python3-pip
     - fish
     - vim
+    - git
     - samba
     - python-smbus
     - i2c-tools
     - libavahi-compat-libdnssd-dev
+    - pigpio
 
 ## - name: Remove "vim" package
 ##   apt:

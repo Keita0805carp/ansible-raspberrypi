@@ -1,10 +1,21 @@
-- hosts: RaspberryPi-pi
-  become: yes
-  roles:
-    - pi
+#- hosts: RaspberryPi-pi
+#  become: yes
+#  roles:
+#    - pi
+
+#- hosts: RaspberryPi-pi2zero
+#  become: yes
+#  roles:
+#    - config    
 
 - hosts: RaspberryPi-zero
   become: yes
   roles:
+    - config
     - apt
     - zero
+
+- hosts: RaspberryPi-zero
+  become: no
+  roles:
+    - npm
