@@ -1,19 +1,34 @@
 ---
-  - name: Upgrade all packages to the latest version
-    apt:
-      name: "*"
-      state: latest
+##  - hosts: RaspberryPi-zero
+##    user: zero
+##    become: yes
+##tasks:
 
-  - name: Update all packages to the latest version
-    apt:
-      upgrade: dist
+- name: Upgrade all packages to the latest version
+  apt:
+    name: "*"
+    state: latest
 
-  - name: Remove "vim" package
-    apt:
-      name: vim
-      state: absent
+- name: Update all packages to the latest version
+  apt:
+    upgrade: dist
 
-  - name: Install vim
-    apt:
-      name: vim
-      state: present
+- name: Install a list of packages
+  apt:
+    pkg:
+    - fish
+    - vim
+    - samba
+    - python-smbus
+    - i2c-tools
+    - libavahi-compat-libdnssd-dev
+
+## - name: Remove "vim" package
+##   apt:
+##     name: vim
+##     state: absent
+
+## - name: Install vim
+##   apt:
+##     name: vim
+##     state: present

@@ -1,0 +1,16 @@
+---
+- name: Install fish
+  apt:
+     name: fish
+     state: present
+     update_cache: yes
+
+- name: Add the user 'zero' with a fish shell, appending the group 'adm, dialout, etc... to the user's groups
+  user: 
+    name: zero
+    shell: /usr/bin/fish
+    groups: pi,adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,netdev,input,spi,gpio
+    append: yes
+
+# - name: wait ssh down
+#   local_action: wait_for host=RaspberryPi-pi port=22 state=stopped

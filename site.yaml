@@ -1,4 +1,10 @@
-- hosts: RaspberryPi-Zero
+- hosts: RaspberryPi-pi
+  become: yes
+  roles:
+    - pi
+
+- hosts: RaspberryPi-zero
   become: yes
   roles:
     - apt
+    - zero
